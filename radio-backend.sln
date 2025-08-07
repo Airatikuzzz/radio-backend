@@ -4,6 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "radio-backend", "radio-back
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7936915A-AD59-4E63-98FD-CDEA232217D0}"
 	ProjectSection(SolutionItems) = preProject
+		.env = .env
 		compose.yaml = compose.yaml
 	EndProjectSection
 EndProject

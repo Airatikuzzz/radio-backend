@@ -1,7 +1,28 @@
 ﻿services:
-  radio-backend:
-    image: radio-backend
+  backend:
     build:
-      context: .
-      dockerfile: radio-backend/Dockerfile
+      context: ./radio-backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"  # Бэкенд на http://localhost:5000
+    networks:
+      - app-network
 
+  frontend:
+    build:
+      context: ./radio-backend/ClientApp
+      dockerfile: Dockerfile.frontend
+      args:
+        - REACT_APP_API_TOKEN=${API_TOKEN}  # Передаём для сборки
+    environment:
+      - REACT_APP_API_TOKEN=${API_TOKEN}  # Прокидываем переменную во фронтенд
+    ports:
+      - "3000:3000"  # Фронтенд на http://localhost:3000
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

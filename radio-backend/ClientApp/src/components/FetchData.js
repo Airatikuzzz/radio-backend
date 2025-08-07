@@ -52,7 +52,10 @@ export class FetchData extends Component {
   }
 
   async populateWeatherData() {
-    const response = await fetch('weatherforecast');
+    console.log(process.env.REACT_APP_API_TOKEN);
+    const response = await fetch('api/weatherforecast', {
+      headers: {'Authorization': `Bearer ${process.env.REACT_APP_API_TOKEN}`},
+    });
     const data = await response.json();
     this.setState({ forecasts: data, loading: false });
   }
