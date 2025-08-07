@@ -1,0 +1,7 @@
+﻿services:
+  radio-backend:
+    image: radio-backend
+    build:
+      context: .
+      dockerfile: radio-backend/Dockerfile
+
